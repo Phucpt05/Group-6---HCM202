@@ -367,7 +367,17 @@
 .segment-entry { padding: 25px 0 28px; border-bottom: 1px solid var(--border); }
 .segment-entry h3 { margin: 0 0 11px; font-family: "Literata", Georgia, serif; font-size: clamp(20px, 2vw, 27px); font-weight: 500; line-height: 1.35; }
 .segment-entry p { margin: 0; color: var(--text-secondary); font-size: 16px; line-height: 1.72; white-space: pre-line; }
-.segment-entry__key-point { max-width: 58ch; font-family: "Literata", Georgia, serif; font-size: clamp(17px, 1.55vw, 21px) !important; line-height: 1.62 !important; }
+.segment-entry__content { max-width: 68ch; font-size: clamp(16px, 1.2vw, 18px) !important; line-height: 1.75 !important; }
+
+.inline-keyword {
+  padding: 1px 3px;
+  border-radius: 1px;
+  background: var(--keyword-bg);
+  box-decoration-break: clone;
+  color: var(--keyword-text);
+  font-weight: 700;
+  -webkit-box-decoration-break: clone;
+}
 
 .source-link {
   display: inline-flex;

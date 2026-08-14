@@ -44,7 +44,9 @@ const desktop = await evaluate(`(() => ({
   scrollWidth: document.documentElement.scrollWidth,
   title: document.querySelector('h1')?.innerText,
   heroImageLoaded: (document.querySelector('.historical-photo img')?.naturalWidth || 0) > 0,
-  headerVisible: Boolean(document.querySelector('.site-header'))
+  headerVisible: Boolean(document.querySelector('.site-header')),
+  contentCharacters: [...document.querySelectorAll('.segment-entry__content')].reduce((total, element) => total + (element.textContent?.length || 0), 0),
+  highlightedKeywords: document.querySelectorAll('.inline-keyword').length
 }))()`);
 
 const themeBefore = await evaluate(`document.documentElement.dataset.theme`);

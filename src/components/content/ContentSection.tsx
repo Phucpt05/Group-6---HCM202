@@ -3,6 +3,7 @@ import { HCM202_KNOWLEDGE_BASE, KnowledgeSegment } from "../../data/hcm202Knowle
 import { LearningSectionConfig } from "../../data/learningStructure";
 import { useReveal } from "../../hooks/useReveal";
 import { EditorialQuote } from "./EditorialQuote";
+import { HighlightedText } from "./HighlightedText";
 import { HistoricalDocument } from "./HistoricalDocument";
 
 interface ContentSectionProps {
@@ -44,7 +45,9 @@ export const ContentSection: React.FC<ContentSectionProps> = ({ config, onOpenSo
             {segments.map((segment) => (
               <article className="segment-entry" key={segment.id}>
                 <h3>{segment.title}</h3>
-                <p className="segment-entry__key-point">{segment.keyQuotes[0]}</p>
+                <p className="segment-entry__content">
+                  <HighlightedText text={segment.content} terms={config.keywords} />
+                </p>
                 <button className="source-link" type="button" onClick={() => onOpenSource(segment)}>
                   Đối chiếu trang {segment.page}
                 </button>
