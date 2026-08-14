@@ -45,9 +45,13 @@ export const ContentSection: React.FC<ContentSectionProps> = ({ config, onOpenSo
             {segments.map((segment) => (
               <article className="segment-entry" key={segment.id}>
                 <h3>{segment.title}</h3>
-                <p className="segment-entry__content">
-                  <HighlightedText text={segment.content} terms={config.keywords} />
-                </p>
+                <ul className="segment-entry__content segment-key-points">
+                  {segment.keyQuotes.slice(0, 2).map((point) => (
+                    <li key={point}>
+                      <HighlightedText text={point} terms={config.keywords} />
+                    </li>
+                  ))}
+                </ul>
                 <button className="source-link" type="button" onClick={() => onOpenSource(segment)}>
                   Đối chiếu trang {segment.page}
                 </button>

@@ -367,7 +367,21 @@
 .segment-entry { padding: 25px 0 28px; border-bottom: 1px solid var(--border); }
 .segment-entry h3 { margin: 0 0 11px; font-family: "Literata", Georgia, serif; font-size: clamp(20px, 2vw, 27px); font-weight: 500; line-height: 1.35; }
 .segment-entry p { margin: 0; color: var(--text-secondary); font-size: 16px; line-height: 1.72; white-space: pre-line; }
-.segment-entry__content { max-width: 68ch; font-size: clamp(16px, 1.2vw, 18px) !important; line-height: 1.75 !important; }
+.segment-entry__content { max-width: 66ch; }
+
+.segment-key-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.segment-key-points li {
+  color: var(--text-secondary);
+  font-size: clamp(16px, 1.15vw, 18px);
+  line-height: 1.7;
+}
+
+.segment-key-points li + li { margin-top: 10px; }
 
 .inline-keyword {
   padding: 1px 3px;
