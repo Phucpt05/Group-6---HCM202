@@ -159,7 +159,7 @@ export function generateRAGAnswer(query: string): RAGAnswer {
   if (matches.length === 0) {
     return {
       query,
-      answerMarkdown: `⚠️ **Thông báo kiểm định nguồn xác thực (Zero Hallucination Guardrail):**\n\nNội dung câu hỏi của bạn hiện **không nằm trong phạm vi tài liệu Giáo trình Tư tưởng Hồ Chí Minh (HCM202, từ Trang 142 đến Trang 164)** được cung cấp.\n\nĐể đảm bảo câu trả lời luôn trung thực, chính xác và có nguồn trích dẫn đối chứng chuẩn xác, hệ thống **tuyệt đối không bịa đặt hoặc dùng nguồn ngoài**.\n\n📌 **Bạn có thể tra cứu các chủ đề trọng tâm sau:**\n- **Bản chất giai cấp công nhân** và sự thống nhất với tính nhân dân, tính dân tộc *(Trang 142 - 144)*\n- **Nhà nước của nhân dân, do nhân dân, vì nhân dân** *(Trang 145 - 150)*\n- **Nhà nước pháp quyền**, thượng tôn pháp luật & pháp quyền nhân nghĩa *(Trang 151 - 157)*\n- **Kiểm soát quyền lực nhà nước** & phòng chống tiêu cực (tham ô, lãng phí, quan liêu, tư túng...) *(Trang 157 - 164)*`,
+      answerMarkdown: `**Thông báo kiểm định nguồn xác thực:**\n\nNội dung câu hỏi của bạn hiện **không nằm trong phạm vi tài liệu Giáo trình Tư tưởng Hồ Chí Minh (HCM202, từ Trang 142 đến Trang 164)** được cung cấp.\n\nĐể đảm bảo câu trả lời luôn trung thực, chính xác và có nguồn trích dẫn đối chứng chuẩn xác, hệ thống **tuyệt đối không bịa đặt hoặc dùng nguồn ngoài**.\n\n**Bạn có thể tra cứu các chủ đề trọng tâm sau:**\n- **Bản chất giai cấp công nhân** và sự thống nhất với tính nhân dân, tính dân tộc *(Trang 142 - 144)*\n- **Nhà nước của nhân dân, do nhân dân, vì nhân dân** *(Trang 145 - 150)*\n- **Nhà nước pháp quyền**, thượng tôn pháp luật & pháp quyền nhân nghĩa *(Trang 151 - 157)*\n- **Kiểm soát quyền lực nhà nước** & phòng chống tiêu cực (tham ô, lãng phí, quan liêu, tư túng...) *(Trang 157 - 164)*`,
       isGrounded: false,
       citations: [],
       suggestedQuestions: [
@@ -189,24 +189,24 @@ export function generateRAGAnswer(query: string): RAGAnswer {
   // Xây dựng câu trả lời có cấu trúc và trích dẫn chuẩn
   let answerLines: string[] = [];
 
-  answerLines.push(`### 🎯 Trả lời dựa trên Giáo trình HCM202 (Trang ${primary.page}):\n`);
+  answerLines.push(`### Trả lời dựa trên Giáo trình HCM202 (Trang ${primary.page}):\n`);
   answerLines.push(`**${primary.title}** (${primary.subSection}):\n`);
   answerLines.push(primary.content);
 
   if (primary.keyQuotes && primary.keyQuotes.length > 0) {
-    answerLines.push(`\n> 💬 **Trích dẫn nguyên văn:**\n> "${primary.keyQuotes.join('"\n> "')}"\n`);
+    answerLines.push(`\n> **Trích dẫn nguyên văn:**\n> "${primary.keyQuotes.join('"\n> "')}"\n`);
   }
 
   if (secondary && secondary.page !== primary.page) {
-    answerLines.push(`\n---\n#### 📖 Nội dung liên quan bổ trợ (Trang ${secondary.page}):\n`);
+    answerLines.push(`\n---\n#### Nội dung liên quan bổ trợ (Trang ${secondary.page}):\n`);
     answerLines.push(`**${secondary.title}**: ${secondary.content}`);
     if (secondary.keyQuotes && secondary.keyQuotes.length > 0) {
-      answerLines.push(`\n> 💬 **Trích dẫn:** "${secondary.keyQuotes[0]}"`);
+      answerLines.push(`\n> **Trích dẫn:** "${secondary.keyQuotes[0]}"`);
     }
   }
 
   if (tertiary && tertiary.page !== primary.page && tertiary.page !== secondary?.page) {
-    answerLines.push(`\n---\n#### 📖 Điểm nhấn mở rộng (Trang ${tertiary.page}):\n`);
+    answerLines.push(`\n---\n#### Điểm nhấn mở rộng (Trang ${tertiary.page}):\n`);
     answerLines.push(`**${tertiary.title}**: ${tertiary.content}`);
   }
 

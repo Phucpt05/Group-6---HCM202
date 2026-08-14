@@ -7,6 +7,13 @@
   </head>
   <body style="margin:0;">
     <div id="root"></div>
+    <script>
+      (function () {
+        var savedTheme = localStorage.getItem("hcm202-theme");
+        var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
