@@ -1,33 +1,74 @@
 import React, { useState, useRef, useEffect } from "react";
 import { COLORS } from "../../constants/theme";
 import { generateRAGAnswer, POPULAR_FAQ_PROMPTS, RAGAnswer, Citation } from "../../utils/ragEngine";
+import { callGeminiMentor, GeminiMessage } from "../../utils/geminiMentorService";
 import { SourceProofModal } from "./SourceProofModal";
+import { HCM202_KNOWLEDGE_BASE } from "../../data/hcm202KnowledgeBase";
 
 interface ChatMessage {
   id: string;
   sender: "user" | "ai";
   text: string;
   ragResult?: RAGAnswer;
+  citations?: Citation[];
   timestamp: string;
 }
 
-function renderFormattedText(text: string): React.ReactNode {
+function renderFormattedText(
+  text: string,
+  onPageClick?: (page: number) => void
+): React.ReactNode {
   if (!text) return null;
 
-  // Split by bold (**...**), italic (*...*), or inline code (`...`)
-  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|`.*?`)/g);
+  // Tách định dạng: **in đậm**, *in nghiêng*, `code`, và thẻ trích dẫn [Trang 14X...]
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|`.*?`|\[Trang\s*\d{3}[^\]]*\])/g);
 
   return parts.map((part, i) => {
+    // 1. Thẻ trích dẫn trang [Trang 14X]
+    const pageMatch = part.match(/^\[Trang\s*(\d{3})([^\]]*)\]$/i);
+    if (pageMatch) {
+      const pageNum = parseInt(pageMatch[1], 10);
+      return (
+        <span
+          key={i}
+          onClick={() => onPageClick && onPageClick(pageNum)}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 3,
+            background: "#8B0000",
+            color: "#FFFFFF",
+            padding: "1px 7px",
+            borderRadius: 12,
+            fontSize: "0.78em",
+            fontWeight: 700,
+            cursor: "pointer",
+            margin: "0 2px",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
+            verticalAlign: "baseline"
+          }}
+          title="Bấm để xem ảnh scan trang sách gốc"
+        >
+          📖 Trang {pageNum} {pageMatch[2]} 🔍
+        </span>
+      );
+    }
+
+    // 2. In đậm **...**
     if (part.startsWith("**") && part.endsWith("**") && part.length >= 4) {
       return (
         <strong key={i} style={{ fontWeight: 700, color: "#1A1A1A" }}>
-          {renderFormattedText(part.slice(2, -2))}
+          {renderFormattedText(part.slice(2, -2), onPageClick)}
         </strong>
       );
     }
+
+    // 3. In nghiêng *...*
     if (part.startsWith("*") && part.endsWith("*") && part.length >= 2 && !part.startsWith("**")) {
       return <em key={i}>{part.slice(1, -1)}</em>;
     }
+
+    // 4. Code `...`
     if (part.startsWith("`") && part.endsWith("`") && part.length >= 2) {
       return (
         <code
@@ -44,6 +85,7 @@ function renderFormattedText(text: string): React.ReactNode {
         </code>
       );
     }
+
     return part;
   });
 }
@@ -53,11 +95,12 @@ export const RAGChatbotView: React.FC = () => {
     {
       id: "welcome-msg",
       sender: "ai",
-      text: `Xin chào! Tôi là **Trợ lý RAG AI HCM202** của Nhóm 6.\n\nTôi được huấn luyện và nạp toàn bộ dữ liệu số hóa từ **23 trang Giáo trình Tư tưởng Hồ Chí Minh (HCM202, từ Trang 142 đến Trang 164)**.\n\n🛡️ **Cam kết:**\n1. **Chính xác 100%:** Trả lời trực tiếp dựa trên nội dung giáo trình được cung cấp.\n2. **Minh bạch nguồn:** Trích dẫn rõ **Số trang**, **Tiểu mục**, **Đoạn văn** và **Câu nói nguyên văn**.\n3. **Không bịa (Zero Hallucination):** Từ chối suy diễn nếu câu hỏi không có trong tài liệu đối chứng.\n\nBạn có thể nhấn vào các câu hỏi gợi ý bên dưới hoặc tự nhập câu hỏi để tra cứu!`,
+      text: `Xin chào các bạn sinh viên! Tôi là **Mentor & Giảng viên AI hướng dẫn môn Tư tưởng Hồ Chí Minh (HCM202)** của Nhóm 6.\n\nTôi được nạp toàn bộ dữ liệu từ **23 trang Giáo trình HCM202 (Trang 142 - 164)** và vận hành bởi **Gemini 2.5 Flash**.\n\n🎓 **Tôi sẽ tự động thích ứng theo câu hỏi của bạn:**\n1. **Khi bạn hỏi bài:** Tôi sẽ giảng giải khúc chiết, minh họa thực tiễn sinh động, dễ nhớ.\n2. **Khi bạn nêu quan điểm / giả định:** Tôi sẽ đóng vai Người phản biện sắc bén, chất vấn lật lại vấn đề và hướng dẫn bạn cách bảo vệ luận điểm trước Hội đồng chấm thi.\n3. **Khi bạn muốn trao đổi:** Chúng ta cùng đàm đạo, mổ xẻ các góc nhìn tư tưởng hai chiều.\n\n🛡️ *Tất cả câu trả lời đều có trích dẫn số trang đối chứng [Trang X]. Bạn hãy thoải mái đặt câu hỏi hoặc đưa ra quan điểm để cùng trao đổi nhé!*`,
       timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
     }
   ]);
 
+  const [geminiHistory, setGeminiHistory] = useState<GeminiMessage[]>([]);
   const [inputQuery, setInputQuery] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const [activeProof, setActiveProof] = useState<{
@@ -80,7 +123,7 @@ export const RAGChatbotView: React.FC = () => {
     scrollToBottom();
   }, [messages, isThinking]);
 
-  const handleSend = (queryToSend?: string) => {
+  const handleSend = async (queryToSend?: string) => {
     const q = (queryToSend || inputQuery).trim();
     if (!q || isThinking) return;
 
@@ -95,19 +138,42 @@ export const RAGChatbotView: React.FC = () => {
     setInputQuery("");
     setIsThinking(true);
 
-    // Xử lý RAG AI Engine (phản hồi mượt mà với hiệu ứng loading ngắn)
-    setTimeout(() => {
-      const result = generateRAGAnswer(q);
+    try {
+      // 1. Gọi Gemini Mentor AI với tự động nhận diện ý định (Intent)
+      const geminiRes = await callGeminiMentor(q, geminiHistory);
+
       const aiMsg: ChatMessage = {
         id: `ai-${Date.now()}`,
         sender: "ai",
-        text: result.answerMarkdown,
-        ragResult: result,
+        text: geminiRes.text,
+        citations: geminiRes.citations,
+        timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      };
+
+      setMessages((prev) => [...prev, aiMsg]);
+
+      // Cập nhật lịch sử đối thoại cho Gemini
+      setGeminiHistory((prev) => [
+        ...prev,
+        { role: "user", parts: [{ text: q }] },
+        { role: "model", parts: [{ text: geminiRes.text }] }
+      ]);
+    } catch (err) {
+      console.warn("Gemini API Error, falling back to Local RAG Engine:", err);
+      // Fallback sang Local RAG nếu có lỗi
+      const localResult = generateRAGAnswer(q);
+      const aiMsg: ChatMessage = {
+        id: `ai-${Date.now()}`,
+        sender: "ai",
+        text: localResult.answerMarkdown,
+        ragResult: localResult,
+        citations: localResult.citations,
         timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       };
       setMessages((prev) => [...prev, aiMsg]);
+    } finally {
       setIsThinking(false);
-    }, 450);
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -115,6 +181,16 @@ export const RAGChatbotView: React.FC = () => {
       e.preventDefault();
       handleSend();
     }
+  };
+
+  const openProofByPage = (pageNum: number) => {
+    const seg = HCM202_KNOWLEDGE_BASE.find((s) => s.page === pageNum);
+    setActiveProof({
+      isOpen: true,
+      page: pageNum,
+      title: seg ? `${seg.title} (${seg.subSection})` : `Giáo trình HCM202 - Trang ${pageNum}`,
+      quote: seg ? seg.keyQuotes[0] : undefined
+    });
   };
 
   const openProofModal = (citation: Citation) => {
@@ -138,15 +214,16 @@ export const RAGChatbotView: React.FC = () => {
   };
 
   const handleClearHistory = () => {
-    if (window.confirm("Bạn có muốn làm mới cuộc trò chuyện?")) {
+    if (window.confirm("Bạn có muốn làm mới cuộc trò chuyện và bắt đầu chủ đề mới?")) {
       setMessages([
         {
           id: "welcome-msg",
           sender: "ai",
-          text: `Đã làm mới phiên hỏi đáp. Hãy đặt câu hỏi về Giáo trình HCM202 (Trang 142 - 164)!`,
+          text: `Đã làm mới phiên thảo luận. Mời bạn đặt câu hỏi hoặc đưa ra bất kỳ quan điểm nào để cùng trao đổi, phản biện nhé!`,
           timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
         }
       ]);
+      setGeminiHistory([]);
     }
   };
 
@@ -157,7 +234,7 @@ export const RAGChatbotView: React.FC = () => {
         inset: 0,
         display: "flex",
         flexDirection: "column",
-        padding: "64px 6vw 20px",
+        padding: "64px 6vw 18px",
         boxSizing: "border-box",
         fontFamily: "'Inter', sans-serif",
         overflow: "hidden"
@@ -178,35 +255,35 @@ export const RAGChatbotView: React.FC = () => {
           boxShadow: "0 2px 8px rgba(0,0,0,0.04)"
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <div
             style={{
-              width: 44,
-              height: 44,
+              width: 40,
+              height: 40,
               borderRadius: "50%",
               background: COLORS.red || "#8B0000",
               color: "#FFF",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: 22,
+              fontSize: 20,
               boxShadow: "0 3px 8px rgba(139,0,0,0.25)"
             }}
           >
-            ⚖️
+            🎓
           </div>
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
               <h2
                 style={{
                   margin: 0,
-                  fontSize: "1.15rem",
+                  fontSize: "1.1rem",
                   fontWeight: 700,
                   color: "#5C1D1D",
                   fontFamily: "'Literata', serif"
                 }}
               >
-                Trợ lý RAG AI HCM202 (Knowledge Retrieval)
+                Mentor RAG AI HCM202 (Giảng giải & Phản biện)
               </h2>
               <span
                 style={{
@@ -215,63 +292,61 @@ export const RAGChatbotView: React.FC = () => {
                   color: "#FFF",
                   padding: "2px 8px",
                   borderRadius: 20,
-                  fontWeight: 600
+                  fontWeight: 600,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4
                 }}
               >
-                100% Giáo trình HCM202 (Trang 142 - 164)
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", display: "inline-block" }} />
+                Gemini 2.5 Flash
               </span>
             </div>
             <p
               style={{
-                margin: "3px 0 0",
-                fontSize: "0.82rem",
+                margin: "2px 0 0",
+                fontSize: "0.8rem",
                 color: "#6B5B45"
               }}
             >
-              Chống bịa đặt • Trích dẫn số trang, đoạn văn • Bấm để xem ảnh chụp sách gốc
+              Cơ sở tri thức: 23 trang Giáo trình HCM202 (Trang 142 - 164) • Tự động Giảng giải, Thảo luận & Phản biện
             </p>
           </div>
         </div>
 
-        <div style={{ display: "flex", gap: 10 }}>
+        {/* Quick Actions */}
+        <div style={{ display: "flex", gap: 8 }}>
           <button
-            onClick={() =>
-              setActiveProof({
-                isOpen: true,
-                page: 142,
-                title: "Giáo trình Môn Tư tưởng Hồ Chí Minh (HCM202)",
-                quote: "Chương II: Tư tưởng Hồ Chí Minh về Nhà nước của nhân dân, do nhân dân, vì nhân dân"
-              })
-            }
+            onClick={() => openProofByPage(142)}
             style={{
-              padding: "7px 14px",
+              padding: "6px 12px",
               borderRadius: 8,
               border: "1px solid #B8860B",
               background: "#FFF",
               color: "#8B6508",
-              fontSize: "0.82rem",
+              fontSize: "0.8rem",
               fontWeight: 600,
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
-              gap: 6
+              gap: 5
             }}
           >
-            📚 Mở xem Giáo trình gốc
+            📚 Xem sách gốc
           </button>
 
           <button
             onClick={handleClearHistory}
             style={{
-              padding: "7px 12px",
+              padding: "6px 10px",
               borderRadius: 8,
               border: "1px solid #D5CBB9",
               background: "#FFF",
               color: "#666",
-              fontSize: "0.82rem",
+              fontSize: "0.8rem",
               cursor: "pointer"
             }}
-            title="Xóa lịch sử chat"
+            title="Làm mới chủ đề thảo luận"
           >
             🔄 Làm mới
           </button>
@@ -286,11 +361,11 @@ export const RAGChatbotView: React.FC = () => {
           background: "#FFFFFF",
           border: "1px solid #E5DFD3",
           borderRadius: 14,
-          padding: "20px 24px",
+          padding: "18px 22px",
           boxShadow: "inset 0 2px 6px rgba(0,0,0,0.02)",
           display: "flex",
           flexDirection: "column",
-          gap: 18
+          gap: 16
         }}
       >
         {messages.map((msg) => {
@@ -321,13 +396,13 @@ export const RAGChatbotView: React.FC = () => {
                   boxShadow: "0 2px 6px rgba(0,0,0,0.15)"
                 }}
               >
-                {isAi ? "🏛️" : "👤"}
+                {isAi ? "🎓" : "👤"}
               </div>
 
               {/* Message Bubble */}
               <div
                 style={{
-                  maxWidth: "82%",
+                  maxWidth: "84%",
                   background: isAi ? "#FAF7F0" : "#EAF2F8",
                   color: "#2C2523",
                   border: isAi ? "1px solid #E8DFCF" : "1px solid #C7DDEE",
@@ -346,13 +421,13 @@ export const RAGChatbotView: React.FC = () => {
                         <h4
                           key={idx}
                           style={{
-                            margin: "8px 0 6px",
+                            margin: "10px 0 6px",
                             fontSize: "1.05rem",
                             color: "#8B0000",
                             fontFamily: "'Literata', serif"
                           }}
                         >
-                          {renderFormattedText(line.replace("### ", ""))}
+                          {renderFormattedText(line.replace("### ", ""), openProofByPage)}
                         </h4>
                       );
                     }
@@ -362,12 +437,12 @@ export const RAGChatbotView: React.FC = () => {
                           key={idx}
                           style={{
                             margin: "8px 0 4px",
-                            fontSize: "0.95rem",
+                            fontSize: "0.96rem",
                             color: "#5C1D1D",
                             fontFamily: "'Literata', serif"
                           }}
                         >
-                          {renderFormattedText(line.replace("#### ", ""))}
+                          {renderFormattedText(line.replace("#### ", ""), openProofByPage)}
                         </h5>
                       );
                     }
@@ -386,14 +461,14 @@ export const RAGChatbotView: React.FC = () => {
                             fontSize: "0.9rem"
                           }}
                         >
-                          {renderFormattedText(line.replace("> ", ""))}
+                          {renderFormattedText(line.replace("> ", ""), openProofByPage)}
                         </blockquote>
                       );
                     }
-                    if (line.startsWith("- ")) {
+                    if (line.startsWith("- ") || line.startsWith("* ")) {
                       return (
-                        <div key={idx} style={{ marginLeft: 16, marginBottom: 4 }}>
-                          • {renderFormattedText(line.replace("- ", ""))}
+                        <div key={idx} style={{ marginLeft: 14, marginBottom: 4 }}>
+                          • {renderFormattedText(line.replace(/^[-*]\s+/, ""), openProofByPage)}
                         </div>
                       );
                     }
@@ -411,14 +486,14 @@ export const RAGChatbotView: React.FC = () => {
                     }
                     return (
                       <p key={idx} style={{ margin: "4px 0" }}>
-                        {renderFormattedText(line)}
+                        {renderFormattedText(line, openProofByPage)}
                       </p>
                     );
                   })}
                 </div>
 
-                {/* Citation Badges (Nguồn đối chứng) */}
-                {msg.ragResult && msg.ragResult.citations.length > 0 && (
+                {/* Citation Badges (Nguồn đối chứng sách thật) */}
+                {msg.citations && msg.citations.length > 0 && (
                   <div
                     style={{
                       marginTop: 14,
@@ -441,11 +516,11 @@ export const RAGChatbotView: React.FC = () => {
                         gap: 6
                       }}
                     >
-                      <span>📑</span> NGUỒN XÁC THỰC GIÁO TRÌNH HCM202:
+                      <span>📑</span> NGUỒN ĐỐI CHỨNG GIÁO TRÌNH HCM202 (BẤM ĐỂ XEM TRANG):
                     </div>
 
                     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                      {msg.ragResult.citations.map((cite, cIdx) => (
+                      {msg.citations.map((cite, cIdx) => (
                         <button
                           key={cIdx}
                           onClick={() => openProofModal(cite)}
@@ -480,47 +555,10 @@ export const RAGChatbotView: React.FC = () => {
                           <span style={{ maxWidth: 180, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                             {cite.title}
                           </span>
-                          <span style={{ fontSize: "0.75rem", background: "#8B0000", color: "#FFF", padding: "1px 5px", borderRadius: 10 }}>
+                          <span style={{ fontSize: "0.75rem", background: "#8B0000", color: "#FFF", padding: "1px 6px", borderRadius: 10 }}>
                             Soi trang 🔍
                           </span>
                         </button>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Suggested Follow-up Questions */}
-                {msg.ragResult && msg.ragResult.suggestedQuestions && msg.ragResult.suggestedQuestions.length > 0 && (
-                  <div
-                    style={{
-                      marginTop: 12,
-                      paddingTop: 10,
-                      borderTop: "1px dashed #E0D7C6"
-                    }}
-                  >
-                    <div style={{ fontSize: "0.76rem", color: "#777", marginBottom: 6 }}>
-                      💡 Câu hỏi gợi ý liên quan:
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                      {msg.ragResult.suggestedQuestions.map((sugQ, sIdx) => (
-                        <span
-                          key={sIdx}
-                          onClick={() => handleSend(sugQ)}
-                          style={{
-                            fontSize: "0.78rem",
-                            padding: "4px 10px",
-                            background: "#F0EBE1",
-                            border: "1px solid #DCD3C3",
-                            borderRadius: 14,
-                            cursor: "pointer",
-                            color: "#4A3B32",
-                            transition: "background 0.2s"
-                          }}
-                          onMouseEnter={(e) => (e.currentTarget.style.background = "#E4DCD0")}
-                          onMouseLeave={(e) => (e.currentTarget.style.background = "#F0EBE1")}
-                        >
-                          {sugQ}
-                        </span>
                       ))}
                     </div>
                   </div>
@@ -570,7 +608,7 @@ export const RAGChatbotView: React.FC = () => {
                 fontStyle: "italic"
               }}
             >
-              Đang tra cứu cơ sở tri thức 23 trang Giáo trình HCM202 (Trang 142 - 164)...
+              Mentor đang tra cứu Giáo trình HCM202 (Trang 142 - 164) và suy ngẫm phản hồi...
             </div>
           </div>
         )}
@@ -586,11 +624,12 @@ export const RAGChatbotView: React.FC = () => {
           display: "flex",
           gap: 8,
           overflowX: "auto",
-          paddingBottom: 4
+          paddingBottom: 4,
+          flexShrink: 0
         }}
       >
         <span style={{ fontSize: "0.78rem", fontWeight: 600, color: "#666", alignSelf: "center", flexShrink: 0 }}>
-          🔥 Câu hỏi trọng tâm:
+          💡 Gợi ý thảo luận:
         </span>
         {POPULAR_FAQ_PROMPTS.map((faq, fIdx) => (
           <button
@@ -627,7 +666,8 @@ export const RAGChatbotView: React.FC = () => {
         style={{
           display: "flex",
           gap: 10,
-          alignItems: "center"
+          alignItems: "center",
+          flexShrink: 0
         }}
       >
         <input
@@ -635,7 +675,7 @@ export const RAGChatbotView: React.FC = () => {
           value={inputQuery}
           onChange={(e) => setInputQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder="Nhập câu hỏi cần tra cứu trong Giáo trình HCM202 (VD: Bản chất giai cấp công nhân, Dân là chủ, Tham ô lãng phí...)"
+          placeholder="Nhập câu hỏi bài học, hoặc đưa ra quan điểm/nhận định để cùng Thầy trao đổi, phản biện..."
           disabled={isThinking}
           style={{
             flex: 1,
@@ -670,7 +710,7 @@ export const RAGChatbotView: React.FC = () => {
             gap: 6
           }}
         >
-          <span>Hỏi RAG AI</span>
+          <span>Gửi Mentor AI</span>
           <span>➔</span>
         </button>
       </div>
