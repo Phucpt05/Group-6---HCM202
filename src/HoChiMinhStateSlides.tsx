@@ -6,10 +6,11 @@ import { SlidesView } from "./components/slides/SlidesView";
 import { QuizView } from "./components/quiz/QuizView";
 import { PasswordModal } from "./components/quiz/PasswordModal";
 import { TabHeader } from "./components/navigation/TabHeader";
+import { RAGChatbotView } from "./components/chat/RAGChatbotView";
 
 export default function HoChiMinhStateSlides() {
-  // Navigation tabs: 'slides' hoặc 'quiz'
-  const [currentTab, setCurrentTab] = useState<"slides" | "quiz">("slides");
+  // Navigation tabs: 'slides', 'quiz' hoặc 'rag'
+  const [currentTab, setCurrentTab] = useState<"slides" | "quiz" | "rag">("slides");
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
   const [passwordInput, setPasswordInput] = useState<string>("");
@@ -62,9 +63,11 @@ export default function HoChiMinhStateSlides() {
   }, [totalSlides]);
 
   // Xử lý chuyển tab
-  const handleTabClick = (tab: "slides" | "quiz") => {
+  const handleTabClick = (tab: "slides" | "quiz" | "rag") => {
     if (tab === "slides") {
       setCurrentTab("slides");
+    } else if (tab === "rag") {
+      setCurrentTab("rag");
     } else {
       if (isUnlocked) {
         setCurrentTab("quiz");
@@ -145,7 +148,7 @@ export default function HoChiMinhStateSlides() {
     if (currentTab === "slides") {
       if (dx > 50) handlePrev();
       if (dx < -50) handleNext();
-    } else {
+    } else if (currentTab === "quiz") {
       if (dx > 50 && quizIdx > 0) setQuizIdx((prev) => prev - 1);
       if (dx < -50 && quizIdx < QUIZ_QUESTIONS.length - 1) setQuizIdx((prev) => prev + 1);
     }
@@ -213,7 +216,9 @@ export default function HoChiMinhStateSlides() {
           width:
             currentTab === "slides"
               ? `${((slideIdx + 1) / totalSlides) * 100}%`
-              : `${((quizIdx + 1) / QUIZ_QUESTIONS.length) * 100}%`,
+              : currentTab === "quiz"
+              ? `${((quizIdx + 1) / QUIZ_QUESTIONS.length) * 100}%`
+              : "100%",
         }}
       />
 
@@ -248,6 +253,9 @@ export default function HoChiMinhStateSlides() {
           onSelectOption={handleOptionSelect}
         />
       )}
+
+      {/* View Trợ lý RAG AI */}
+      {currentTab === "rag" && <RAGChatbotView />}
 
       {/* Modal Mật mã */}
       <PasswordModal
