@@ -51,7 +51,7 @@ export const ReviewSection: React.FC = () => {
             </div>
 
             <div>
-              <div className="quiz-options" role="group" aria-label={`Các lựa chọn cho câu ${question.id}`}>
+              <div className={`quiz-options${isSolved ? " is-solved" : ""}`} role="group" aria-label={`Các lựa chọn cho câu ${question.id}`}>
                 {question.options.map((option) => {
                   const selected = currentAttempts.includes(option.key);
                   const correct = selected && option.key === question.correctAnswer;
@@ -62,12 +62,13 @@ export const ReviewSection: React.FC = () => {
                       type="button"
                       key={option.key}
                       disabled={isSolved}
+                      aria-pressed={selected}
                       onClick={() => selectOption(option.key)}
                     >
                       <span className="quiz-option__key">{option.key}</span>
                       <span className="quiz-option__text">{option.text}</span>
-                      {correct && <span className="quiz-option__status">Chính xác</span>}
-                      {wrong && <span className="quiz-option__status">Chưa chính xác</span>}
+                      {correct && <span className="quiz-option__status">Đáp án đúng</span>}
+                      {wrong && <span className="quiz-option__status">Đã chọn · Sai</span>}
                     </button>
                   );
                 })}
@@ -75,7 +76,10 @@ export const ReviewSection: React.FC = () => {
 
               {currentAttempts.length > 0 && (
                 <div className={`quiz-feedback${isSolved ? " is-correct" : ""}`} aria-live="polite">
-                  <strong>{isSolved ? "Chính xác · Giải thích" : "Chưa chính xác"}</strong>
+                  <strong>{isSolved ? "Chính xác" : "Chưa chính xác"}</strong>
+                  {isSolved && (
+                    <h4>Đáp án {question.correctAnswer}: {question.options.find((option) => option.key === question.correctAnswer)?.text}</h4>
+                  )}
                   <p>{isSolved ? question.explanation : "Phương án vừa chọn chưa đúng. Hãy tiếp tục đối chiếu và chọn một phương án khác."}</p>
                 </div>
               )}
