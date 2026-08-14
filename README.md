@@ -1,6 +1,12 @@
-# Nhà nước của dân, do dân, vì dân — Tư tưởng Hồ Chí Minh (Chương 3)
+# HCM202 · Nhóm 6
 
-Slide deck dạng web, viết bằng React + TypeScript + Vite.
+Website học tập và trình bày chuyên đề **“Tư tưởng Hồ Chí Minh về Nhà nước của nhân dân, do nhân dân, vì nhân dân”**.
+
+## Minh bạch sử dụng AI
+
+Dự án công khai công cụ, phạm vi hỗ trợ, nguồn kiểm chứng và giới hạn của AI tại [AI_DECLARATION.md](./AI_DECLARATION.md).
+
+Dự án sử dụng React 18, TypeScript và Vite. Nội dung được trình bày theo dạng bài đọc editorial cô đọng, phù hợp để khám phá kiến thức và thuyết trình trực tiếp trên website.
 
 ## Chạy dự án
 
@@ -9,33 +15,35 @@ npm install
 npm run dev
 ```
 
-Mở trình duyệt tại địa chỉ Vite in ra (thường là `http://localhost:5173`).
+Mở địa chỉ Vite hiển thị trong terminal, mặc định là `http://localhost:5173`.
 
-## Build production
+Để dùng Gemini, tạo file `.env` tại thư mục gốc:
+
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Khi không có API key hoặc Gemini không khả dụng, trợ lý tự chuyển sang Local RAG dựa trên dữ liệu giáo trình trang 142–164.
+
+## Kiểm tra production
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Cấu trúc
+## Cấu trúc chính
 
+```text
+src/
+├── components/
+│   ├── chat/          # Floating chat và nguồn đối chứng
+│   ├── content/       # Section nội dung và tư liệu lịch sử
+│   ├── home/          # Hero, tổng quan, mục lục, timeline
+│   ├── layout/        # Header, progress, side indicator, footer
+│   ├── review/        # Ôn tập trắc nghiệm
+├── data/              # Knowledge base và cấu trúc bài học
+├── hooks/             # Active section, reveal, scroll progress
+├── styles/            # Design tokens và CSS theo từng khu vực
+└── utils/             # Local RAG và Gemini mentor service
 ```
-├── index.html
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-└── src/
-    ├── main.tsx                 # entry point, render component ra #root
-    └── HoChiMinhStateSlides.tsx # component slide chính (10 slide)
-```
-
-## Điều hướng slide
-
-- Phím mũi tên trái/phải hoặc phím cách
-- Vuốt trái/phải trên mobile
-- Nút mũi tên hoặc chấm tròn ở thanh điều hướng dưới màn hình
-
-## Chỉnh sửa nội dung
-
-Toàn bộ nội dung/slide nằm trong mảng `slides` bên trong `src/HoChiMinhStateSlides.tsx`. Mỗi slide là một JSX element độc lập — có thể sửa text, thêm/bớt slide trực tiếp trong mảng đó. Bảng màu và font khai báo ở đầu file trong object `COLORS`.
