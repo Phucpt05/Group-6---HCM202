@@ -22,6 +22,8 @@
   --side-muted: rgba(36, 36, 31, 0.38);
   --success: #284a2b;
   --success-border: #456845;
+  --success-bg: rgba(69, 104, 69, 0.12);
+  --error-bg: rgba(168, 41, 41, 0.09);
   --timeline-bg: #24241f;
   --timeline-text: #faf8f2;
   --timeline-muted: rgba(250, 248, 242, 0.72);
@@ -62,6 +64,8 @@
   --side-muted: rgba(240, 236, 225, 0.38);
   --success: #a8c9a3;
   --success-border: #71966c;
+  --success-bg: rgba(113, 150, 108, 0.2);
+  --error-bg: rgba(199, 88, 80, 0.16);
   --timeline-bg: #11110f;
   --timeline-text: #f0ece1;
   --timeline-muted: rgba(240, 236, 225, 0.72);

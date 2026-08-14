@@ -64,6 +64,17 @@ export const ContentSection: React.FC<ContentSectionProps> = ({ config, onOpenSo
             {quoteSegment && <EditorialQuote segment={quoteSegment} />}
           </aside>
         </div>
+
+        <aside className="discussion-prompt" aria-label={`Câu hỏi phản biện chương ${config.number}`}>
+          <div className="discussion-prompt__meta">
+            <span>{config.number}</span>
+            <strong>Thảo luận cuối chương</strong>
+          </div>
+          <p>
+            <HighlightedText text={config.discussionQuestion} terms={config.keywords} />
+          </p>
+          <span className="discussion-prompt__action">Câu hỏi dành cho cả lớp</span>
+        </aside>
       </div>
     </section>
   );

@@ -46,7 +46,8 @@ const desktop = await evaluate(`(() => ({
   heroImageLoaded: (document.querySelector('.historical-photo img')?.naturalWidth || 0) > 0,
   headerVisible: Boolean(document.querySelector('.site-header')),
   contentCharacters: [...document.querySelectorAll('.segment-entry__content')].reduce((total, element) => total + (element.textContent?.length || 0), 0),
-  highlightedKeywords: document.querySelectorAll('.inline-keyword').length
+  highlightedKeywords: document.querySelectorAll('.inline-keyword').length,
+  discussionQuestions: document.querySelectorAll('.discussion-prompt').length
 }))()`);
 
 const themeBefore = await evaluate(`document.documentElement.dataset.theme`);
@@ -146,9 +147,26 @@ await wait(700);
 await evaluate(`document.querySelectorAll('.quiz-option')[0]?.click()`);
 await wait(150);
 const wrongFeedback = await evaluate(`document.querySelector('.quiz-feedback strong')?.textContent?.trim()`);
+const wrongOptionState = await evaluate(`(() => {
+  const option = document.querySelector('.quiz-option.is-wrong');
+  return option ? {
+    status: option.querySelector('.quiz-option__status')?.textContent?.trim(),
+    background: getComputedStyle(option).backgroundColor,
+    border: getComputedStyle(option).borderLeftColor
+  } : null;
+})()`);
 await evaluate(`document.querySelectorAll('.quiz-option')[1]?.click()`);
 await wait(150);
 const correctFeedback = await evaluate(`document.querySelector('.quiz-feedback strong')?.textContent?.trim()`);
+const correctOptionState = await evaluate(`(() => {
+  const option = document.querySelector('.quiz-option.is-correct');
+  return option ? {
+    status: option.querySelector('.quiz-option__status')?.textContent?.trim(),
+    background: getComputedStyle(option).backgroundColor,
+    border: getComputedStyle(option).borderLeftColor,
+    answerRepeated: document.querySelector('.quiz-feedback h4')?.textContent?.trim()
+  } : null;
+})()`);
 
 socket.close();
-console.log(JSON.stringify({ desktop, darkMode, timeline, mobile, chat, scrollNavigation, application, wrongFeedback, correctFeedback }, null, 2));
+console.log(JSON.stringify({ desktop, darkMode, timeline, mobile, chat, scrollNavigation, application, wrongFeedback, wrongOptionState, correctFeedback, correctOptionState }, null, 2));
