@@ -17,6 +17,8 @@
   --surface-hover: rgba(250, 248, 242, 0.54);
   --shadow-color: rgba(36, 36, 31, 0.12);
   --quote-mark: rgba(123, 30, 30, 0.12);
+  --keyword-bg: rgba(168, 41, 41, 0.11);
+  --keyword-text: #681919;
   --side-muted: rgba(36, 36, 31, 0.38);
   --success: #284a2b;
   --success-border: #456845;
@@ -55,6 +57,8 @@
   --surface-hover: rgba(240, 236, 225, 0.06);
   --shadow-color: rgba(0, 0, 0, 0.34);
   --quote-mark: rgba(225, 122, 112, 0.16);
+  --keyword-bg: rgba(225, 122, 112, 0.2);
+  --keyword-text: #f0a097;
   --side-muted: rgba(240, 236, 225, 0.38);
   --success: #a8c9a3;
   --success-border: #71966c;
