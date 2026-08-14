@@ -21,10 +21,10 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 1,
     title: "Khái niệm bản chất giai cấp của Nhà nước Việt Nam mới",
-    content: "Trong tư tưởng Hồ Chí Minh, Nhà nước Việt Nam là nhà nước dân chủ, nhưng tuyệt nhiên nó không phải là \"nhà nước toàn dân\", hiểu theo nghĩa là nhà nước phi giai cấp. Nhà nước ở đâu và bao giờ cũng mang bản chất của một giai cấp nhất định. Nhà nước Việt Nam mới - Nhà nước Việt Nam Dân chủ Cộng hòa, theo quan điểm của Hồ Chí Minh, là một nhà nước mang bản chất giai cấp công nhân.",
+    content: "Trong hệ thống lý luận của Hồ Chí Minh, Nhà nước Việt Nam Dân chủ Cộng hòa mang bản chất dân chủ sâu sắc, nhưng Người tuyệt đối phủ nhận quan điểm cho rằng đây là một 'nhà nước toàn dân' theo nghĩa phi giai cấp. Người khẳng định rõ ràng rằng Nhà nước ở đâu và bao giờ cũng mang bản chất của một giai cấp nhất định. Nhà nước mới của ta là một nhà nước mang bản chất giai cấp công nhân.",
     keyQuotes: [
-      "Nhà nước Việt Nam là nhà nước dân chủ, nhưng tuyệt nhiên nó không phải là 'nhà nước toàn dân', hiểu theo nghĩa là nhà nước phi giai cấp.",
-      "Nhà nước Việt Nam mới... là một nhà nước mang bản chất giai cấp công nhân."
+      "Nhà nước mang bản chất dân chủ sâu sắc, nhưng Người tuyệt đối phủ nhận quan điểm cho rằng đây là một 'nhà nước toàn dân' phi giai cấp.",
+      "Nhà nước ở đâu và bao giờ cũng mang bản chất của giai cấp nhất định; Nhà nước mới của ta mang bản chất giai cấp công nhân."
     ],
     keywords: ["ban chat giai cap", "bản chất giai cấp", "nhà nước toàn dân", "nha nuoc toan dan", "phi giai cap", "phi giai cấp", "giai cấp công nhân", "giai cap cong nhan", "viet nam dan chu cong hoa"],
     imageSrc: "/docs_images/page_142.png",
@@ -36,11 +36,11 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     section: "II. TƯ TƯỞNG HỒ CHÍ MINH VỀ NHÀ NƯỚC CỦA NHÂN DÂN, DO NHÂN DÂN, VÌ NHÂN DÂN",
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 2,
-    title: "Phương diện 1: Đảng Cộng sản Việt Nam giữ vị trí và vai trò cầm quyền",
-    content: "Một là, Đảng Cộng sản Việt Nam giữ vị trí và vai trò cầm quyền. Lời nói đầu của bản Hiến pháp năm 1959 khẳng định: \"Nhà nước của ta là Nhà nước dân chủ nhân dân, dựa trên nền tảng liên minh công nông, do giai cấp công nhân lãnh đạo\". Ngay trong quan điểm về nhà nước dân chủ, nhà nước do nhân dân là người chủ nắm chính quyền, Hồ Chí Minh đã nhấn mạnh nòng cốt của nhân dân là liên minh công - nông - trí, do giai cấp công nhân mà đội tiên phong của nó là Đảng Cộng sản Việt Nam lãnh đạo. Đảng cầm quyền bằng các phương thức: (1) Bằng đường lối, quan điểm, chủ trương để Nhà nước thể chế hóa thành pháp luật, chính sách, kế hoạch; (2) Bằng hoạt động của các tổ chức đảng và đảng viên của mình trong bộ máy, cơ quan nhà nước; (3) Bằng công tác kiểm tra.",
+    title: "Phương diện 1: Đảng Cộng sản Việt Nam giữ vị trí cầm quyền",
+    content: "Một là, Đảng Cộng sản Việt Nam giữ vị trí cầm quyền. Khẳng định vai trò lãnh đạo tuyệt đối của Đảng đối với Nhà nước (Hiến pháp 1959). Đảng cầm quyền bằng: (1) Đường lối, chủ trương, chính sách để thể chế hóa thành luật pháp; (2) Sự gương mẫu của tổ chức Đảng và đảng viên trong bộ máy; (3) Thông qua công tác kiểm tra chặt chẽ.",
     keyQuotes: [
-      "Nhà nước của ta là Nhà nước dân chủ nhân dân, dựa trên nền tảng liên minh công nông, do giai cấp công nhân lãnh đạo (Hiến pháp 1959).",
-      "Đảng cầm quyền bằng các phương thức: (1) Bằng đường lối, quan điểm, chủ trương để Nhà nước thể chế hóa...; (2) Bằng hoạt động của các tổ chức đảng và đảng viên...; (3) Bằng công tác kiểm tra."
+      "Đảng Cộng sản Việt Nam giữ vị trí cầm quyền: Khẳng định vai trò lãnh đạo tuyệt đối của Đảng đối với Nhà nước (Hiến pháp 1959).",
+      "Đảng cầm quyền bằng 3 phương thức: Đường lối thể chế hóa thành luật pháp; Sự gương mẫu của đảng viên; Công tác kiểm tra chặt chẽ."
     ],
     keywords: ["dang cam quyen", "đảng cầm quyền", "vai trò lãnh đạo của đảng", "phuong thuc cam quyen", "phương thức cầm quyền", "hien phap 1959", "hiến pháp 1959", "lien minh cong nong tri", "liên minh công nông trí", "kiem tra", "kiểm tra", "the che hoa"],
     imageSrc: "/docs_images/page_142.png"
@@ -54,10 +54,10 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 1,
     title: "Phương diện 2: Tính định hướng xã hội chủ nghĩa",
-    content: "Hai là, bản chất giai cấp của Nhà nước Việt Nam thể hiện ở tính định hướng xã hội chủ nghĩa trong sự phát triển đất nước. Đưa đất nước đi lên chủ nghĩa xã hội và chủ nghĩa cộng sản là mục tiêu cách mạng nhất quán của Hồ Chí Minh. Việc giành lấy chính quyền, lập nên Nhà nước Việt Nam mới chính là để giai cấp công nhân và nhân dân lao động có được một tổ chức mạnh mẽ nhằm thực hiện mục tiêu nói trên.",
+    content: "Hai là, tính định hướng xã hội chủ nghĩa. Mục tiêu nhất quán của Nhà nước mới là đưa đất nước đi lên chủ nghĩa xã hội và chủ nghĩa cộng sản. Đại diện cho lợi ích của giai cấp công nhân và nhân dân lao động; việc giành chính quyền và lập Nhà nước mới nhằm tạo dựng công cụ mạnh mẽ để xóa bỏ chế độ tư hữu tư liệu sản xuất, xây dựng xã hội mới.",
     keyQuotes: [
-      "Bản chất giai cấp của Nhà nước Việt Nam thể hiện ở tính định hướng xã hội chủ nghĩa trong sự phát triển đất nước.",
-      "Đưa đất nước đi lên chủ nghĩa xã hội và chủ nghĩa cộng sản là mục tiêu cách mạng nhất quán của Hồ Chí Minh."
+      "Tính định hướng xã hội chủ nghĩa: Mục tiêu nhất quán của Nhà nước mới là đưa đất nước đi lên chủ nghĩa xã hội và chủ nghĩa cộng sản.",
+      "Đại diện lợi ích của giai cấp công nhân và nhân dân lao động: Công cụ mạnh mẽ để xóa bỏ áp bức bóc lột, xây dựng xã hội mới."
     ],
     keywords: ["dinh huong xa hoi chu nghia", "định hướng xã hội chủ nghĩa", "muc tieu cach mang", "mục tiêu cách mạng", "chu nghia cong san", "chủ nghĩa cộng sản"],
     imageSrc: "/docs_images/page_143.png"
@@ -68,11 +68,11 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     section: "II. TƯ TƯỞNG HỒ CHÍ MINH VỀ NHÀ NƯỚC CỦA NHÂN DÂN, DO NHÂN DÂN, VÌ NHÂN DÂN",
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 2,
-    title: "Phương diện 3: Nguyên tắc tập trung dân chủ",
-    content: "Ba là, bản chất giai cấp công nhân của Nhà nước thể hiện ở nguyên tắc tổ chức và hoạt động của nó là nguyên tắc tập trung dân chủ. Hồ Chí Minh rất chú ý đến cả hai mặt dân chủ và tập trung trong tổ chức và hoạt động của tất cả bộ máy, cơ quan nhà nước. Người nhấn mạnh đến sự cần thiết phải phát huy cao độ dân chủ, đồng thời cũng nhấn mạnh phải phát huy cao độ tập trung, Nhà nước phải tập trung thống nhất quyền lực để tất cả mọi quyền lực thuộc về nhân dân.",
+    title: "Phương diện 3: Nguyên tắc tổ chức tập trung dân chủ",
+    content: "Ba là, nguyên tắc tổ chức tập trung dân chủ. Đây là nguyên tắc cốt lõi trong tổ chức và hoạt động của bộ máy nhà nước. Hồ Chí Minh chú trọng cả hai mặt: dân chủ (phát huy quyền làm chủ của nhân dân) và tập trung (thống nhất quyền lực tối cao về tay nhân dân) để đảm bảo hiệu lực hành chính tối đa.",
     keyQuotes: [
-      "Bản chất giai cấp công nhân của Nhà nước thể hiện ở nguyên tắc tổ chức và hoạt động của nó là nguyên tắc tập trung dân chủ.",
-      "Nhà nước phải tập trung thống nhất quyền lực để tất cả mọi quyền lực thuộc về nhân dân."
+      "Nguyên tắc tổ chức tập trung dân chủ: Nguyên tắc cốt lõi trong tổ chức và hoạt động của bộ máy nhà nước.",
+      "Chú trọng cả hai mặt dân chủ (phát huy quyền làm chủ của dân) và tập trung (thống nhất quyền lực về tay nhân dân) để đảm bảo hiệu lực tối đa."
     ],
     keywords: ["tap trung dan chu", "tập trung dân chủ", "nguyen tac to chuc", "nguyên tắc tổ chức", "phát huy cao độ dân chủ", "phát huy cao độ tập trung"],
     imageSrc: "/docs_images/page_143.png"
@@ -84,10 +84,10 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 3,
     title: "Sự thống nhất giữa bản chất giai cấp công nhân với tính nhân dân và tính dân tộc",
-    content: "Trong Nhà nước Việt Nam, bản chất giai cấp công nhân thống nhất với tính nhân dân và tính dân tộc. Hồ Chí Minh là người giải quyết rất thành công mối quan hệ giữa vấn đề dân tộc với vấn đề giai cấp trong cách mạng Việt Nam. Trong tư tưởng của Người về Nhà nước mới ở Việt Nam, bản chất giai cấp công nhân của Nhà nước thống nhất với tính nhân dân và tính dân tộc, thể hiện cụ thể ở 3 điểm.",
+    content: "Đặc biệt, Hồ Chí Minh đã giải quyết xuất sắc và sáng tạo mối quan hệ giữa giai cấp và dân tộc. Trong Nhà nước mới, bản chất giai cấp công nhân không hề đối lập mà thống nhất hữu cơ với tính nhân dân và tính dân tộc, thể hiện cụ thể ở ba điểm.",
     keyQuotes: [
-      "Trong Nhà nước Việt Nam, bản chất giai cấp công nhân thống nhất với tính nhân dân và tính dân tộc.",
-      "Hồ Chí Minh là người giải quyết rất thành công mối quan hệ giữa vấn đề dân tộc với vấn đề giai cấp trong cách mạng Việt Nam."
+      "Bản chất giai cấp công nhân không hề đối lập mà thống nhất hữu cơ với tính nhân dân và tính dân tộc.",
+      "Hồ Chí Minh đã giải quyết xuất sắc và sáng tạo mối quan hệ biện chứng giữa giai cấp và dân tộc."
     ],
     keywords: ["tinh nhan dan", "tính nhân dân", "tinh dan toc", "tính dân tộc", "thong nhat ban chat", "thống nhất bản chất", "giai cấp và dân tộc"],
     imageSrc: "/docs_images/page_143.png"
@@ -100,12 +100,11 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     section: "II. TƯ TƯỞNG HỒ CHÍ MINH VỀ NHÀ NƯỚC CỦA NHÂN DÂN, DO NHÂN DÂN, VÌ NHÂN DÂN",
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 1,
-    title: "Biểu hiện 1: Kết quả đấu tranh lâu dài của toàn thể dân tộc",
-    content: "Một là, Nhà nước mới ở Việt Nam ra đời là kết quả của cuộc đấu tranh lâu dài, gian khổ của nhiều thế hệ người Việt Nam, của toàn thể dân tộc. Từ giữa thế kỷ XIX, khi đất nước bị ngoại xâm, các tầng lớp nhân dân Việt Nam, hết thế hệ này đến thế hệ khác đã không quản hy sinh, xương máu chiến đấu cho độc lập, tự do của Tổ quốc. Từ khi Đảng Cộng sản Việt Nam ra đời, trở thành lực lượng lãnh đạo sự nghiệp cách mạng của dân tộc, với chiến lược đại đoàn kết đúng đắn, sức mạnh của toàn dân tộc đã được tập hợp và phát huy cao độ, chiến thắng ngoại xâm, giành lại độc lập, tự do, lập nên Nhà nước Việt Nam Dân chủ Cộng hòa - nhà nước dân chủ nhân dân đầu tiên ở Đông Nam Á. Nhà nước Việt Nam mới, do vậy, không phải của riêng giai cấp, tầng lớp nào, mà là thuộc về nhân dân.",
+    title: "Biểu hiện 1: Nguồn gốc ra đời của Nhà nước",
+    content: "Một là, nguồn gốc ra đời của Nhà nước: Nhà nước mới ra đời là thành quả của cuộc đấu tranh lâu dài, gian khổ và hy sinh xương máu của nhiều thế hệ, của toàn thể nhân dân và khối đại đoàn kết dân tộc dưới sự lãnh đạo của Đảng. Nhà nước này không thuộc về riêng một giai cấp hay tầng lớp nào mà thuộc về toàn thể nhân dân Việt Nam.",
     keyQuotes: [
-      "Nhà nước mới ở Việt Nam ra đời là kết quả của cuộc đấu tranh lâu dài, gian khổ của nhiều thế hệ người Việt Nam, của toàn thể dân tộc.",
-      "Lập nên Nhà nước Việt Nam Dân chủ Cộng hòa - nhà nước dân chủ nhân dân đầu tiên ở Đông Nam Á.",
-      "Nhà nước Việt Nam mới, do vậy, không phải của riêng giai cấp, tầng lớp nào, mà là thuộc về nhân dân."
+      "Nguồn gốc ra đời: Là thành quả đấu tranh lâu dài, gian khổ và hy sinh xương máu của toàn thể nhân dân và khối đại đoàn kết dân tộc dưới sự lãnh đạo của Đảng.",
+      "Nhà nước không thuộc về riêng một giai cấp hay tầng lớp nào mà thuộc về toàn thể nhân dân Việt Nam."
     ],
     keywords: ["ket qua dau tranh", "kết quả đấu tranh", "toan the dan toc", "toàn thể dân tộc", "nha nuoc dan chu nhan dan dau tien o dong nam a", "đông nam á", "thuoc ve nhan dan"],
     imageSrc: "/docs_images/page_144.png"
@@ -116,11 +115,11 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     section: "II. TƯ TƯỞNG HỒ CHÍ MINH VỀ NHÀ NƯỚC CỦA NHÂN DÂN, DO NHÂN DÂN, VÌ NHÂN DÂN",
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 2,
-    title: "Biểu hiện 2: Bảo vệ lợi ích của giai cấp công nhân gắn liền với toàn dân tộc",
-    content: "Hai là, Nhà nước Việt Nam ngay từ khi ra đời đã xác định rõ và luôn kiên trì, nhất quán mục tiêu vì quyền lợi của nhân dân, lấy quyền lợi của dân tộc làm nền tảng. Bản chất của vấn đề này là ở chỗ, Hồ Chí Minh khẳng định quyền lợi cơ bản của giai cấp công nhân thống nhất với lợi ích của nhân dân lao động và của toàn dân tộc. Nhà nước Việt Nam mới là người đại diện, bảo vệ, đấu tranh không chỉ cho lợi ích của giai cấp công nhân, mà còn của nhân dân lao động và của toàn dân tộc.",
+    title: "Biểu hiện 2: Mục tiêu và lợi ích nhất quán",
+    content: "Hai là, mục tiêu và lợi ích nhất quán: Ngay từ khi ra đời, Nhà nước luôn kiên trì mục tiêu vì lợi ích tối cao của quốc gia - dân tộc, lấy lợi ích của nhân dân làm nền tảng. Lợi ích cơ bản của giai cấp công nhân thống nhất hoàn toàn với lợi ích của nhân dân lao động và của toàn dân tộc. Nhà nước là người bảo vệ và đấu tranh cho lợi ích chung đó.",
     keyQuotes: [
-      "Nhà nước Việt Nam ngay từ khi ra đời đã xác định rõ và luôn kiên trì, nhất quán mục tiêu vì quyền lợi của nhân dân, lấy quyền lợi của dân tộc làm nền tảng.",
-      "Quyền lợi cơ bản của giai cấp công nhân thống nhất với lợi ích của nhân dân lao động và của toàn dân tộc."
+      "Mục tiêu và lợi ích nhất quán: Luôn kiên trì mục tiêu vì lợi ích tối cao của quốc gia - dân tộc, lấy lợi ích của nhân dân làm nền tảng.",
+      "Lợi ích cơ bản của giai cấp công nhân thống nhất hoàn toàn với lợi ích của nhân dân lao động và của toàn dân tộc."
     ],
     keywords: ["quyen loi cua nhan dan", "quyền lợi của nhân dân", "lay quyen loi dan toc lam nen tang", "lấy quyền lợi dân tộc làm nền tảng", "bao ve loi ich"],
     imageSrc: "/docs_images/page_144.png"
@@ -132,10 +131,10 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
     subSection: "1. Nhà nước dân chủ - a) Bản chất giai cấp của Nhà nước",
     paragraphIndex: 3,
     title: "Biểu hiện 3: Đảm đương nhiệm vụ toàn thể dân tộc giao phó",
-    content: "Ba là, Nhà nước mới ở Việt Nam đã đảm đương nhiệm vụ mà toàn thể dân tộc giao phó là tổ chức nhân dân tiến hành các cuộc kháng chiến để bảo vệ nền độc lập, tự do của Tổ quốc, xây dựng một nước Việt Nam hòa bình, thống nhất, độc lập, dân chủ và giàu mạnh, góp phần tích cực vào sự phát triển tiến bộ của thế giới. Con đường quá độ lên chủ nghĩa xã hội và đi đến chủ nghĩa cộng sản là con đường mà Hồ Chí Minh và Đảng ta đã xác định, cũng là sự nghiệp của chính Nhà nước.",
+    content: "Ba là, đảm đương nhiệm vụ toàn thể dân tộc giao phó: Tổ chức nhân dân tiến hành các cuộc kháng chiến bảo vệ nền độc lập, tự do của Tổ quốc, xây dựng một nước Việt Nam hòa bình, thống nhất, độc lập, dân chủ và giàu mạnh.",
     keyQuotes: [
-      "Nhà nước mới ở Việt Nam đã đảm đương nhiệm vụ mà toàn thể dân tộc giao phó là tổ chức nhân dân tiến hành các cuộc kháng chiến để bảo vệ nền độc lập, tự do của Tổ quốc...",
-      "Xây dựng một nước Việt Nam hòa bình, thống nhất, độc lập, dân chủ và giàu mạnh..."
+      "Đảm đương nhiệm vụ toàn thể dân tộc giao phó: Tổ chức nhân dân tiến hành các cuộc kháng chiến bảo vệ độc lập, tự do của Tổ quốc.",
+      "Kiến quốc xây dựng một nước Việt Nam hòa bình, thống nhất, độc lập, dân chủ và giàu mạnh."
     ],
     keywords: ["nhiem vu dan toc giao pho", "nhiệm vụ dân tộc giao phó", "khang chien kien quoc", "kháng chiến", "hoa binh thong nhat doc lap dan chu giau manh", "hòa bình thống nhất"],
     imageSrc: "/docs_images/page_144.png"
@@ -344,6 +343,40 @@ export const HCM202_KNOWLEDGE_BASE: KnowledgeSegment[] = [
       "\"Chẳng những làm những việc trực tiếp lợi cho dân, mà cũng có khi làm những việc mới xem qua như là hại đến dân, nhưng thực chất là vì lợi ích toàn cục, vì lợi ích lâu dài của nhân dân\" (t.5, tr.285)."
     ],
     keywords: ["vua la day to vua la lanh dao", "vừa là đầy tớ vừa là người lãnh đạo", "vua hien lai vua minh", "vừa hiền lại vừa minh", "lo truoc thien ha vui sau thien ha", "lo trước thiên hạ vui sau thiên hạ", "duc va tai", "đức và tài", "loi ich lau dai toan cuc"],
+    imageSrc: "/docs_images/page_150.png"
+  },
+
+  // ===================== TỔNG HỢP 3 THÀNH TỐ =====================
+  {
+    id: "p150-compare",
+    page: 150,
+    section: "II. TƯ TƯỞNG HỒ CHÍ MINH VỀ NHÀ NƯỚC CỦA NHÂN DÂN, DO NHÂN DÂN, VÌ NHÂN DÂN",
+    subSection: "V. Bảng tổng hợp so sánh ba thành tố",
+    paragraphIndex: 3,
+    title: "1. Sự khác nhau về trọng tâm của ba thành tố",
+    content: "Trong tư tưởng Hồ Chí Minh, ba thành tố có sự phân định rõ ràng về trọng tâm:\n- Nhà nước CỦA DÂN: Tập trung vào Nguồn gốc và Chủ thể của quyền lực. Khẳng định nguyên lý 'Dân là chủ', địa vị tối cao thuộc về nhân dân, thực thi qua dân chủ trực tiếp và đại diện.\n- Nhà nước DO DÂN: Tập trung vào Vai trò xây dựng và Quản lý Nhà nước của người dân. Khẳng định quy chế 'Dân làm chủ', nhân dân cử ra, tổ chức nên bộ máy, gánh vác nghĩa vụ công dân và nâng cao năng lực làm chủ.\n- Nhà nước VÌ DÂN: Tập trung vào Mục tiêu và Phương châm phụng sự. Mọi hoạt động nhằm mưu cầu tự do hạnh phúc cho dân, không đặc quyền đặc lợi; cán bộ vừa là người lãnh đạo vừa là đầy tớ trung thành.",
+    keyQuotes: [
+      "Nhà nước CỦA DÂN: Tập trung vào Nguồn gốc & Chủ thể quyền lực ('Dân là chủ').",
+      "Nhà nước DO DÂN: Tập trung vào Vai trò xây dựng & Quản lý Nhà nước ('Dân làm chủ').",
+      "Nhà nước VÌ DÂN: Tập trung vào Mục tiêu & Phương châm phụng sự ('Hết lòng mưu tự do, hạnh phúc cho dân')."
+    ],
+    keywords: ["so sanh 3 thanh to", "của dân", "do dân", "vì dân", "nguồn gốc quyền lực", "vai trò xây dựng", "mục tiêu phụng sự"],
+    imageSrc: "/docs_images/page_150.png"
+  },
+  {
+    id: "p150-relation",
+    page: 150,
+    section: "II. TƯ TƯỞNG HỒ CHÍ MINH VỀ NHÀ NƯỚC CỦA NHÂN DÂN, DO NHÂN DÂN, VÌ NHÂN DÂN",
+    subSection: "V. Mối quan hệ biện chứng giữa ba thành tố",
+    paragraphIndex: 4,
+    title: "2. Mối quan hệ biện chứng thống nhất giữa ba thành tố",
+    content: "Ba thành tố không tách rời mà liên hệ khăng khít, tạo nên một chỉnh thể thống nhất:\n- Nguồn gốc dẫn đến trách nhiệm: Vì Nhà nước là CỦA dân nên dân mới có quyền và nghĩa vụ làm chủ, xây dựng Nhà nước (DO dân). Ngược lại, quá trình nhân dân bầu cử, kiểm soát (DO dân) mới khẳng định thực chất quyền sở hữu (CỦA dân).\n- Chủ thể quyết định mục đích: Vì là Nhà nước CỦA dân và DO dân lập nên, nên tính chất tự thân của nó phải là hoạt động VÌ lợi ích của chính nhân dân.\n- Hiệu quả hoạt động củng cố niềm tin: Khi Nhà nước thực sự VÌ dân, nhân dân càng tin yêu, ủng hộ và tích cực tham gia quản lý, bảo vệ Nhà nước (DO dân), làm cho bản chất CỦA dân càng thêm vững chắc.",
+    keyQuotes: [
+      "Nguồn gốc dẫn đến trách nhiệm: Nhà nước CỦA dân là cơ sở pháp lý và động lực để nhân dân xây dựng, quản lý (DO dân).",
+      "Chủ thể quyết định mục đích: Nhà nước CỦA dân và DO dân tất yếu phải hành động VÌ lợi ích của nhân dân.",
+      "Hiệu quả củng cố niềm tin: Nhà nước phục vụ VÌ dân củng cố lòng tin để nhân dân hăng hái bảo vệ và phát triển Nhà nước (DO dân)."
+    ],
+    keywords: ["moi quan he bien chung", "mối quan hệ biện chứng", "chinh the thong nhat", "chỉnh thể thống nhất", "nguon goc dan den trach nhiem", "chu the quyet dinh muc dich", "hieu qua cung co niem tin"],
     imageSrc: "/docs_images/page_150.png"
   },
 
