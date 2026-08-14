@@ -14,11 +14,11 @@ export const LEARNING_SECTIONS: LearningSectionConfig[] = [
   {
     id: "ban-chat-nha-nuoc",
     number: "01",
-    eyebrow: "Bản chất Nhà nước",
-    title: "Bản chất giai cấp công nhân và sự thống nhất dân tộc",
-    segmentIds: ["p142-1", "p143-3", "p144-2"],
-    keywords: ["Giai cấp công nhân", "Tính nhân dân", "Tính dân tộc"],
-    discussionQuestion: "Nếu Nhà nước mang bản chất giai cấp công nhân, vì sao điều đó không mâu thuẫn với tính nhân dân và tính dân tộc?",
+    eyebrow: "Bản chất Nhà nước mới",
+    title: "Bản chất giai cấp công nhân và sự thống nhất với tính nhân dân, tính dân tộc",
+    segmentIds: ["p142-1", "p142-2", "p143-1", "p143-2", "p143-3", "p144-1", "p144-2"],
+    keywords: ["Bản chất giai cấp công nhân", "Sự lãnh đạo của Đảng", "Tính nhân dân và dân tộc"],
+    discussionQuestion: "Nếu Nhà nước mang bản chất giai cấp công nhân (một giai cấp cụ thể), làm thế nào nó có thể đồng thời đại diện rộng rãi và thuộc về toàn thể nhân dân (\"của nhân dân\") mà không rơi vào mâu thuẫn bè phái cục bộ?",
     quoteSegmentId: "p142-1",
     layout: "text-first"
   },
@@ -26,10 +26,10 @@ export const LEARNING_SECTIONS: LearningSectionConfig[] = [
     id: "cua-nhan-dan",
     number: "02",
     eyebrow: "Nhà nước của nhân dân",
-    title: "Quyền lực tối cao thuộc về nhân dân",
+    title: "Quyền lực tối cao thuộc về nhân dân và cơ chế thừa ủy quyền",
     segmentIds: ["p145-1", "p146-1", "p147-1"],
-    keywords: ["Dân là chủ", "Thừa ủy quyền", "Quyền bãi miễn"],
-    discussionQuestion: "Khi cơ quan được nhân dân ủy quyền hoạt động chưa đúng, nhân dân có thể thực hiện quyền làm chủ bằng những cách nào?",
+    keywords: ["Dân là chủ", "Dân chủ trực tiếp & gián tiếp", "Thừa ủy quyền", "Quyền bãi miễn"],
+    discussionQuestion: "Nếu cán bộ nhà nước chỉ mang tư thế là 'đầy tớ', tại sao trong quản lý hành chính cán bộ lại có quyền ra lệnh, cưỡng chế và xử phạt dân? Cơ chế ủy quyền lực công giải mã mâu thuẫn này ra sao?",
     quoteSegmentId: "p145-1",
     layout: "evidence-first"
   },
@@ -37,10 +37,10 @@ export const LEARNING_SECTIONS: LearningSectionConfig[] = [
     id: "do-nhan-dan",
     number: "03",
     eyebrow: "Nhà nước do nhân dân",
-    title: "Từ vị thế làm chủ đến năng lực làm chủ",
+    title: "Phân biệt 'Dân là chủ' & 'Dân làm chủ' — Nâng cao năng lực làm chủ",
     segmentIds: ["p148-1", "p148-2", "p149-1"],
-    keywords: ["Dân làm chủ", "Nghĩa vụ công dân", "Năng lực làm chủ"],
-    discussionQuestion: "Chỉ xác lập vị thế “dân là chủ” đã đủ chưa? Vì sao nhân dân còn cần năng lực làm chủ?",
+    keywords: ["Dân làm chủ", "Nghĩa vụ công dân", "Năng lực làm chủ", "Giáo dục dân trí"],
+    discussionQuestion: "Sự phân biệt giữa vị thế 'Dân là chủ' và bổn phận hành động 'Dân làm chủ' có ý nghĩa thực tiễn thế nào? Vì sao Hồ Chí Minh nhấn mạnh: 'Muốn làm chủ được tốt, phải có năng lực làm chủ'?",
     quoteSegmentId: "p148-1",
     layout: "quote-led"
   },
@@ -48,34 +48,12 @@ export const LEARNING_SECTIONS: LearningSectionConfig[] = [
     id: "vi-nhan-dan",
     number: "04",
     eyebrow: "Nhà nước vì nhân dân",
-    title: "Phụng sự lợi ích và hạnh phúc của nhân dân",
+    title: "Mục tiêu phụng sự tối thượng và vai trò kép của người cán bộ",
     segmentIds: ["p149-2", "p150-1", "p150-2"],
-    keywords: ["Lợi ích nhân dân", "Không đặc quyền", "Đức và tài"],
-    discussionQuestion: "Dựa vào đâu để nhận biết một quyết định của Nhà nước thật sự vì dân, thay vì chỉ nhân danh lợi ích nhân dân?",
+    keywords: ["Phụng sự nhân dân", "Không đặc quyền đặc lợi", "Vừa là đầy tớ vừa là lãnh đạo"],
+    discussionQuestion: "Hồ Chí Minh cho rằng cán bộ lãnh đạo có thể thực hiện những việc 'mới xem qua như là hại đến dân, nhưng thực chất là vì lợi ích lâu dài'. Cơ chế kiểm soát nào ngăn ngừa nguy cơ cán bộ lạm dụng danh nghĩa này để áp đặt chính sách chủ quan?",
     quoteSegmentId: "p150-1",
     layout: "text-first"
-  },
-  {
-    id: "nha-nuoc-phap-quyen",
-    number: "05",
-    eyebrow: "Nhà nước pháp quyền",
-    title: "Hợp hiến, hợp pháp và pháp quyền nhân nghĩa",
-    segmentIds: ["p151-2", "p153-1", "p155-1"],
-    keywords: ["Hợp hiến, hợp pháp", "Thượng tôn pháp luật", "Pháp quyền nhân nghĩa"],
-    discussionQuestion: "Vì sao một Nhà nước thượng tôn pháp luật vẫn phải bảo đảm tính nhân nghĩa trong thực thi pháp luật?",
-    quoteSegmentId: "p155-1",
-    layout: "evidence-first"
-  },
-  {
-    id: "kiem-soat-quyen-luc",
-    number: "06",
-    eyebrow: "Kiểm soát quyền lực",
-    title: "Kiểm soát quyền lực và phòng, chống tiêu cực",
-    segmentIds: ["p157-2", "p160-2", "p163-1"],
-    keywords: ["Kiểm soát quyền lực", "Giặc nội xâm", "Chống tiêu cực"],
-    discussionQuestion: "Kiểm soát quyền lực từ trên xuống đã đủ chưa? Vì sao cần thêm sự kiểm soát từ dưới lên của nhân dân?",
-    quoteSegmentId: "p160-2",
-    layout: "quote-led"
   }
 ];
 

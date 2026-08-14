@@ -48,26 +48,26 @@ export const APPLICATION_PRINCIPLES: ApplicationPrinciple[] = [
   {
     number: "01",
     keyword: "Dân là chủ",
-    action: "Tạo cách để người dân biết, phản hồi và theo dõi việc giải quyết.",
+    action: "Xác lập vị thế chủ thể tối cao của người dân qua cơ chế thừa ủy quyền và quyền giám sát.",
     segmentId: "p145-1"
   },
   {
     number: "02",
-    keyword: "Lợi ích của dân",
-    action: "Ưu tiên tháo gỡ vướng mắc và giải thích rõ trách nhiệm phục vụ.",
-    segmentId: "p150-1"
+    keyword: "Dân làm chủ",
+    action: "Tạo điều kiện để người dân thực thi nghĩa vụ và chủ động nâng cao năng lực làm chủ.",
+    segmentId: "p148-1"
   },
   {
     number: "03",
-    keyword: "Kiểm soát có hệ thống",
-    action: "Ghi nhận tiến độ, đầu mối phụ trách và cơ chế kiểm tra hai chiều.",
-    segmentId: "p158-1"
+    keyword: "Vì nhân dân phụng sự",
+    action: "Lấy sự hài lòng và hạnh phúc của dân làm thước đo: việc gì có lợi cho dân hết sức làm.",
+    segmentId: "p149-2"
   },
   {
     number: "04",
-    keyword: "Biến thành hành động",
-    action: "Chuyển chủ trương thành quy trình công vụ có kết quả kiểm chứng được.",
-    segmentId: "p164-2"
+    keyword: "Vừa hiền vừa minh",
+    action: "Cán bộ kết hợp đạo đức chí công vô tư (đầy tớ) với trí tuệ sáng suốt dẫn đường (lãnh đạo).",
+    segmentId: "p150-1"
   }
 ];
 

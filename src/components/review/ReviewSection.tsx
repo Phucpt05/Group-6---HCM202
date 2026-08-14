@@ -48,6 +48,21 @@ export const ReviewSection: React.FC = () => {
             <div>
               <p className="eyebrow">Câu hỏi {question.id}</p>
               <h3>{question.question}</h3>
+
+              {/* Con số câu hỏi 1, 2, 3, 4, 5 hiển thị ngay dưới câu hỏi luôn */}
+              <div className="quiz-dots" style={{ marginTop: "28px" }} aria-label="Chuyển nhanh câu hỏi">
+                {QUIZ_QUESTIONS.map((item, index) => (
+                  <button
+                    type="button"
+                    key={item.id}
+                    className={`quiz-dot${index === questionIndex ? " is-current" : ""}${solved[index] ? " is-solved" : ""}`}
+                    onClick={() => setQuestionIndex(index)}
+                    aria-label={`Câu ${item.id}${solved[index] ? ", đã hoàn thành" : ""}`}
+                  >
+                    {item.id}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div>
@@ -87,18 +102,8 @@ export const ReviewSection: React.FC = () => {
           </div>
 
           <div className="quiz-controls">
-            <div className="quiz-dots" aria-label="Chuyển nhanh câu hỏi">
-              {QUIZ_QUESTIONS.map((item, index) => (
-                <button
-                  type="button"
-                  key={item.id}
-                  className={`quiz-dot${index === questionIndex ? " is-current" : ""}${solved[index] ? " is-solved" : ""}`}
-                  onClick={() => setQuestionIndex(index)}
-                  aria-label={`Câu ${item.id}${solved[index] ? ", đã hoàn thành" : ""}`}
-                >
-                  {item.id}
-                </button>
-              ))}
+            <div style={{ color: "var(--text-secondary)", fontSize: "13px" }}>
+              Tiến độ ôn tập: <strong>{Object.keys(solved).length}</strong> / {QUIZ_QUESTIONS.length} câu hoàn thành
             </div>
             <div className="quiz-nav">
               <button className="outline-action" type="button" disabled={questionIndex === 0} onClick={() => setQuestionIndex((index) => Math.max(0, index - 1))}>Câu trước</button>
