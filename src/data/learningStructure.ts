@@ -103,8 +103,5 @@ export const PRIMARY_NAV = [
   { id: "tong-quan", label: "Tổng quan" },
   { id: "noi-dung", label: "Nội dung" },
   { id: "van-dung", label: "Vận dụng" },
-  { id: "dong-thoi-gian", label: "Dòng thời gian" },
   { id: "on-tap", label: "Ôn tập" }
 ];
-
-export const TIMELINE_SEGMENT_IDS = ["p151-1", "p151-2", "p152-1", "p153-1"];

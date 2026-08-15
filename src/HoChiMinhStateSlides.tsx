@@ -6,7 +6,6 @@ import { ContentIndex } from "./components/home/ContentIndex";
 import { ApplicationSection } from "./components/home/ApplicationSection";
 import { HeroSection } from "./components/home/HeroSection";
 import { OverviewSection } from "./components/home/OverviewSection";
-import { TimelineSection } from "./components/home/TimelineSection";
 import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
 import { SectionProgress } from "./components/layout/SectionProgress";
@@ -52,7 +51,6 @@ export default function HoChiMinhStateSlides() {
         <ContentIndex />
         {LEARNING_SECTIONS.map((section) => <ContentSection key={section.id} config={section} onOpenSource={openSource} />)}
         <ApplicationSection onOpenSource={openSource} />
-        <TimelineSection />
         <ReviewSection />
       </main>
       <Footer />
