@@ -107,6 +107,29 @@
   transform: translateY(1px);
 }
 
+.quiz-lock-hint {
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: var(--keyword-bg);
+  color: var(--text-secondary);
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(169, 130, 44, 0.2);
+}
+
+.quiz-lock-hint strong {
+  color: var(--red-dark);
+  font-family: monospace;
+  font-size: 14px;
+  padding: 1px 6px;
+  background: var(--paper);
+  border-radius: 3px;
+  border: 1px solid var(--border);
+}
+
 .quiz-lock-error {
   margin: 12px 0 0;
   color: var(--red-dark);

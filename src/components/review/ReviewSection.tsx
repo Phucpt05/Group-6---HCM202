@@ -67,7 +67,7 @@ export const ReviewSection: React.FC = () => {
                 <input
                   type="password"
                   className={`quiz-lock-input${passwordError ? " is-error" : ""}`}
-                  placeholder="Nhập mật khẩu để mở khóa..."
+                  placeholder="Nhập mật khẩu (gợi ý: 0)..."
                   value={passwordInput}
                   onChange={(e) => {
                     setPasswordInput(e.target.value);
@@ -78,6 +78,9 @@ export const ReviewSection: React.FC = () => {
                 <button type="submit" className="quiz-lock-btn">
                   Mở khóa câu hỏi
                 </button>
+              </div>
+              <div className="quiz-lock-hint">
+                <span>💡 Gợi ý mật khẩu: <strong>0</strong></span>
               </div>
               {passwordError && <p className="quiz-lock-error">{passwordError}</p>}
             </form>
