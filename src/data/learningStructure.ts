@@ -104,6 +104,7 @@ export const PRIMARY_NAV = [
   { id: "noi-dung", label: "Nội dung" },
   { id: "van-dung", label: "Vận dụng" },
   { id: "dong-thoi-gian", label: "Dòng thời gian" },
+  { id: "minigame", label: "Minigame" },
   { id: "on-tap", label: "Ôn tập" }
 ];
 

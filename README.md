@@ -6,6 +6,10 @@ Website học tập và trình bày chuyên đề **“Tư tưởng Hồ Chí Mi
 
 Dự án công khai công cụ, phạm vi hỗ trợ, nguồn kiểm chứng và giới hạn của AI tại [AI_DECLARATION.md](./AI_DECLARATION.md).
 
+## Minigame tương tác
+
+Phần **Lật mảnh ghép: Hành trình vì dân** được tích hợp từ project `minigame-hcm202`. Website chính giữ lại luật chơi 12 câu hỏi, cơ chế mở ảnh, dự đoán sự kiện và phần kết quả; giao diện được viết lại bằng React 18, TypeScript và CSS theo hệ thiết kế editorial hiện tại, không đưa thêm Tailwind hoặc Framer Motion vào dependency.
+
 Dự án sử dụng React 18, TypeScript và Vite. Nội dung được trình bày theo dạng bài đọc editorial cô đọng, phù hợp để khám phá kiến thức và thuyết trình trực tiếp trên website.
 
 ## Chạy dự án

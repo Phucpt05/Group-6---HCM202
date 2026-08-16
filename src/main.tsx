@@ -4,6 +4,7 @@ import HoChiMinhStateSlides from "./HoChiMinhStateSlides";
 import "./styles/global.css";
 import "./styles/learning.css";
 import "./styles/review.css";
+import "./styles/minigame.css";
 import "./styles/chat.css";
 import "./styles/source-modal.css";
 

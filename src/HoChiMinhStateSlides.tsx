@@ -11,6 +11,7 @@ import { Footer } from "./components/layout/Footer";
 import { Header } from "./components/layout/Header";
 import { SectionProgress } from "./components/layout/SectionProgress";
 import { SideSectionIndicator } from "./components/layout/SideSectionIndicator";
+import { HistoryPuzzleGame } from "./components/minigame/HistoryPuzzleGame";
 import { ReviewSection } from "./components/review/ReviewSection";
 import { KnowledgeSegment } from "./data/hcm202KnowledgeBase";
 import { LEARNING_SECTIONS, PRIMARY_NAV } from "./data/learningStructure";
@@ -53,6 +54,7 @@ export default function HoChiMinhStateSlides() {
         {LEARNING_SECTIONS.map((section) => <ContentSection key={section.id} config={section} onOpenSource={openSource} />)}
         <ApplicationSection onOpenSource={openSource} />
         <TimelineSection onOpenSource={openSource} />
+        <HistoryPuzzleGame onOpenSource={openSource} />
         <ReviewSection />
       </main>
       <Footer />

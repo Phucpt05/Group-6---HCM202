@@ -62,6 +62,23 @@ const darkMode = await evaluate(`({
 })`);
 darkMode.before = themeBefore;
 
+await evaluate(`window.scrollTo({ top: document.getElementById('minigame')?.offsetTop || 0, behavior: 'instant' })`);
+await wait(500);
+const minigameDesktop = await evaluate(`(() => {
+  const brand = document.querySelector('.site-brand')?.getBoundingClientRect();
+  const navigation = document.querySelector('.site-nav')?.getBoundingClientRect();
+  const workspace = document.querySelector('.history-game__workspace');
+  const board = document.querySelector('.puzzle-board')?.getBoundingClientRect();
+  const panel = document.querySelector('.history-game__panel')?.getBoundingClientRect();
+  return {
+    headerHasGap: Boolean(brand && navigation && navigation.left > brand.right),
+    navItemCount: document.querySelectorAll('.site-nav > a').length,
+    workspaceColumns: workspace ? getComputedStyle(workspace).gridTemplateColumns : '',
+    boardBeforePanel: Boolean(board && panel && board.right < panel.left),
+    boardImageLoaded: (document.querySelector('.puzzle-board > img')?.naturalWidth || 0) > 0
+  };
+})()`);
+
 await send("Emulation.setDeviceMetricsOverride", { width: 1024, height: 768, deviceScaleFactor: 1, mobile: false });
 await evaluate(`window.scrollTo({ top: document.getElementById('dong-thoi-gian')?.offsetTop || 0, behavior: 'instant' })`);
 await wait(500);
@@ -142,6 +159,62 @@ await wait(150);
 application.sourceModalOpened = await evaluate(`Boolean(document.querySelector('.source-modal'))`);
 await evaluate(`document.querySelector('.source-modal__header button')?.click()`);
 
+await evaluate(`window.scrollTo({ top: document.getElementById('minigame')?.offsetTop || 0, behavior: 'instant' })`);
+await wait(700);
+const minigameLayout = await evaluate(`(() => {
+  const section = document.querySelector('.history-game-section')?.getBoundingClientRect();
+  const board = document.querySelector('.puzzle-board')?.getBoundingClientRect();
+  const image = document.querySelector('.puzzle-board > img');
+  return {
+    activeHeader: document.querySelector('.site-nav a.is-active')?.textContent?.trim(),
+    cellCount: document.querySelectorAll('.puzzle-cell').length,
+    imageLoaded: (image?.naturalWidth || 0) > 0,
+    sectionWithinViewport: Boolean(section && section.left >= 0 && section.right <= window.innerWidth),
+    boardWithinViewport: Boolean(board && board.left >= 0 && board.right <= window.innerWidth)
+  };
+})()`);
+await evaluate(`document.querySelector('.puzzle-cell')?.click()`);
+await wait(150);
+await evaluate(`document.querySelectorAll('.minigame-option')[0]?.click()`);
+await wait(120);
+const minigameWrong = await evaluate(`({
+  dialogOpen: Boolean(document.querySelector('.minigame-dialog')),
+  status: document.querySelector('.minigame-option.is-wrong strong')?.textContent?.trim()
+})`);
+await evaluate(`document.querySelectorAll('.minigame-option')[1]?.click()`);
+await wait(120);
+const minigameCorrect = await evaluate(`({
+  status: document.querySelector('.minigame-option.is-correct strong')?.textContent?.trim(),
+  feedback: document.querySelector('.minigame-dialog__feedback div strong')?.textContent?.trim()
+})`);
+await evaluate(`document.querySelector('.minigame-dialog__feedback .outline-action')?.click()`);
+await wait(180);
+const revealedAfterQuestion = await evaluate(`document.querySelectorAll('.puzzle-cell.is-revealed').length`);
+await evaluate(`document.querySelector('.history-game__panel > .text-link')?.click()`);
+await wait(100);
+await evaluate(`(() => {
+  const input = document.querySelector('#history-guess');
+  const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+  setter?.call(input, '1946');
+  input?.dispatchEvent(new Event('input', { bubbles: true }));
+})()`);
+await evaluate(`document.querySelector('.history-game__guess')?.requestSubmit()`);
+await wait(180);
+const guessedGame = await evaluate(`({
+  revealedCells: document.querySelectorAll('.puzzle-cell.is-revealed').length,
+  completed: Boolean(document.querySelector('.history-game__complete'))
+})`);
+await evaluate(`document.querySelector('.history-game__complete .outline-action')?.click()`);
+await wait(150);
+const resultDialog = await evaluate(`({
+  title: document.querySelector('#minigame-result-title')?.textContent?.trim(),
+  imageLoaded: (document.querySelector('.minigame-result__image img')?.naturalWidth || 0) > 0
+})`);
+await evaluate(`document.querySelector('.minigame-result__actions .text-link')?.click()`);
+await wait(120);
+resultDialog.sourceOpened = await evaluate(`document.querySelector('.source-modal .eyebrow')?.textContent?.trim()`);
+await evaluate(`document.querySelector('.source-modal__header button')?.click(); document.querySelector('.minigame-result .minigame-dialog__header button')?.click()`);
+
 await evaluate(`window.scrollTo({ top: document.getElementById('on-tap')?.offsetTop || 0, behavior: 'instant' })`);
 await wait(700);
 await evaluate(`document.querySelectorAll('.quiz-option')[0]?.click()`);
@@ -169,4 +242,4 @@ const correctOptionState = await evaluate(`(() => {
 })()`);
 
 socket.close();
-console.log(JSON.stringify({ desktop, darkMode, timeline, mobile, chat, scrollNavigation, application, wrongFeedback, wrongOptionState, correctFeedback, correctOptionState }, null, 2));
+console.log(JSON.stringify({ desktop, darkMode, minigameDesktop, timeline, mobile, chat, scrollNavigation, application, minigameLayout, minigameWrong, minigameCorrect, revealedAfterQuestion, guessedGame, resultDialog, wrongFeedback, wrongOptionState, correctFeedback, correctOptionState }, null, 2));
