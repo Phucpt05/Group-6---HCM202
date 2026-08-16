@@ -22,7 +22,7 @@
 ## 3. Những phần có sự hỗ trợ của AI
 
 1. **Trợ lý học tập:** Gemini tạo câu trả lời khi có `VITE_GEMINI_API_KEY`. Nếu không có khóa hoặc dịch vụ lỗi, website chuyển sang Local RAG.
-2. **Thiết kế và lập trình:** Codex hỗ trợ chuyển giao diện trình chiếu cũ thành bài đọc editorial, xây dựng dark mode, timeline, ôn tập, chat nổi, responsive và accessibility.
+2. **Thiết kế và lập trình:** Codex hỗ trợ chuyển giao diện trình chiếu cũ thành bài đọc editorial, xây dựng dark mode, timeline, minigame câu hỏi, chat nổi, responsive và accessibility.
 3. **Kiểm tra kỹ thuật:** Codex hỗ trợ viết và chạy TypeScript/build cùng kịch bản smoke test trên các kích thước màn hình.
 4. **Tài liệu:** Codex hỗ trợ soạn bản kê khai này và cập nhật hướng dẫn dự án.
 5. **Vận dụng thực tiễn:** Codex hỗ trợ diễn đạt tình huống giả định về xử lý hồ sơ trực tuyến. Đây là phần liên hệ của Nhóm 6, không phải nội dung hay sự kiện được trích từ giáo trình.
@@ -50,13 +50,14 @@ AI không được dùng để thay thế, tự thêm hoặc sửa dữ kiện h
 
 - kiến trúc giao diện đọc cuộn, header, hero, mục lục và các section nội dung;
 - cách rút gọn phần hiển thị và nhấn mạnh từ khóa phục vụ thuyết trình;
-- timeline, dark mode, quiz, floating chat, responsive và accessibility;
+- timeline, dark mode, minigame tích hợp câu hỏi, floating chat, responsive và accessibility;
 - phần vận dụng thực tiễn dưới dạng tình huống tương tác.
 - ba ảnh minh họa AI tại `public/application_images/`.
 
 ### Loại bỏ
 
 - chế độ trình chiếu 14 slide và điều hướng slide cũ theo yêu cầu của nhóm;
+- phần ôn tập trắc nghiệm độc lập sau khi 5 câu hỏi được chuyển vào minigame;
 - tab AI toàn trang, modal mật khẩu cũ, emoji và icon trang trí không cần thiết.
 
 ## 6. Cơ chế kiểm chứng và trách nhiệm của nhóm

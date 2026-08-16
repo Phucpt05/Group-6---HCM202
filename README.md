@@ -8,7 +8,7 @@ Dự án công khai công cụ, phạm vi hỗ trợ, nguồn kiểm chứng và
 
 ## Minigame tương tác
 
-Phần **Lật mảnh ghép: Hành trình vì dân** được tích hợp từ project `minigame-hcm202`. Website chính giữ lại luật chơi 12 câu hỏi, cơ chế mở ảnh, dự đoán sự kiện và phần kết quả; giao diện được viết lại bằng React 18, TypeScript và CSS theo hệ thiết kế editorial hiện tại, không đưa thêm Tailwind hoặc Framer Motion vào dependency.
+Phần **Lật mảnh ghép: Hành trình vì dân** được tích hợp từ project `minigame-hcm202`. Minigame có 12 ô câu hỏi; 5 câu nâng cao từ phần ôn tập được trộn xen kẽ với 7 câu cũ. Mỗi đáp án đúng mở một mảnh ảnh, đồng thời người chơi vẫn có thể dự đoán sự kiện trước khi mở hết. Khu vực chơi được bảo vệ bằng mật khẩu `0`. Giao diện được viết lại bằng React 18, TypeScript và CSS theo hệ thiết kế editorial hiện tại, không đưa thêm Tailwind hoặc Framer Motion vào dependency.
 
 Dự án sử dụng React 18, TypeScript và Vite. Nội dung được trình bày theo dạng bài đọc editorial cô đọng, phù hợp để khám phá kiến thức và thuyết trình trực tiếp trên website.
 
@@ -45,7 +45,7 @@ src/
 │   ├── content/       # Section nội dung và tư liệu lịch sử
 │   ├── home/          # Hero, tổng quan, mục lục, timeline
 │   ├── layout/        # Header, progress, side indicator, footer
-│   ├── review/        # Ôn tập trắc nghiệm
+│   ├── minigame/      # Câu hỏi, lật mảnh ghép và kết quả
 ├── data/              # Knowledge base và cấu trúc bài học
 ├── hooks/             # Active section, reveal, scroll progress
 ├── styles/            # Design tokens và CSS theo từng khu vực

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { MinigameQuestion } from "../../data/minigameQuestions";
+import { QuestionData, QuizOption } from "../../types/quiz";
 
 interface MinigameQuestionDialogProps {
-  question: MinigameQuestion;
+  question: QuestionData;
   onCorrect: () => void;
   onClose: () => void;
 }
 
 export const MinigameQuestionDialog: React.FC<MinigameQuestionDialogProps> = ({ question, onCorrect, onClose }) => {
-  const [wrongAttempts, setWrongAttempts] = useState<Set<number>>(() => new Set());
-  const [correctAnswer, setCorrectAnswer] = useState<number | null>(null);
+  const [wrongAttempts, setWrongAttempts] = useState<Set<QuizOption["key"]>>(() => new Set());
+  const [correctAnswer, setCorrectAnswer] = useState<QuizOption["key"] | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -19,13 +19,13 @@ export const MinigameQuestionDialog: React.FC<MinigameQuestionDialogProps> = ({ 
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  const chooseAnswer = (index: number) => {
-    if (correctAnswer !== null || wrongAttempts.has(index)) return;
-    if (index === question.correctAnswer) {
-      setCorrectAnswer(index);
+  const chooseAnswer = (key: QuizOption["key"]) => {
+    if (correctAnswer !== null || wrongAttempts.has(key)) return;
+    if (key === question.correctAnswer) {
+      setCorrectAnswer(key);
       return;
     }
-    setWrongAttempts((current) => new Set(current).add(index));
+    setWrongAttempts((current) => new Set(current).add(key));
   };
 
   return (
@@ -33,26 +33,26 @@ export const MinigameQuestionDialog: React.FC<MinigameQuestionDialogProps> = ({ 
       <div className="minigame-dialog" onClick={(event) => event.stopPropagation()}>
         <header className="minigame-dialog__header">
           <div>
-            <p className="eyebrow">Câu {String(question.id).padStart(2, "0")} · {question.block}</p>
+            <p className="eyebrow">Câu {String(question.id).padStart(2, "0")} · {question.topic}</p>
             <h3 id="minigame-question-title">{question.question}</h3>
           </div>
           <button type="button" onClick={onClose} aria-label="Đóng câu hỏi">×</button>
         </header>
 
         <div className="minigame-options" role="group" aria-label={`Các phương án câu ${question.id}`}>
-          {question.options.map((option, index) => {
-            const isWrong = wrongAttempts.has(index);
-            const isCorrect = correctAnswer === index;
+          {question.options.map((option) => {
+            const isWrong = wrongAttempts.has(option.key);
+            const isCorrect = correctAnswer === option.key;
             return (
               <button
                 type="button"
-                key={option}
+                key={option.key}
                 className={`minigame-option${isWrong ? " is-wrong" : ""}${isCorrect ? " is-correct" : ""}`}
                 disabled={correctAnswer !== null || isWrong}
                 aria-pressed={isWrong || isCorrect}
-                onClick={() => chooseAnswer(index)}
+                onClick={() => chooseAnswer(option.key)}
               >
-                <span>{option}</span>
+                <span><b>{option.key}.</b> {option.text}</span>
                 {isWrong && <strong>Chưa chính xác</strong>}
                 {isCorrect && <strong>Đáp án đúng</strong>}
               </button>
@@ -65,7 +65,7 @@ export const MinigameQuestionDialog: React.FC<MinigameQuestionDialogProps> = ({ 
             <>
               <div>
                 <strong>Chính xác</strong>
-                <p>Mảnh ghép số {question.id} đã sẵn sàng được mở.</p>
+                <p>{question.explanation}</p>
               </div>
               <button className="outline-action" type="button" onClick={onCorrect}>Mở mảnh ghép</button>
             </>
